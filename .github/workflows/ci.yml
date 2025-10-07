@@ -41,5 +41,4 @@ jobs:
         run: test -z $(go fmt ./...)
 
       - name: lint check
-        run: test -z $(staticcheck ./...)
-    
+        run: staticcheck ./...    
