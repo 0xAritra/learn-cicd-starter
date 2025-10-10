@@ -20,4 +20,15 @@ jobs:
       
       - name: Run Go Build
         run: ./scripts/buildprod.sh
+      
+      - id: 'auth'
+        uses: google-github-actions/auth@v2
+        with:
+          credentials-json: '${{ secrets.GCP_CREDENTIALS }}'
+      
+      - name: Setup gcloud
+        uses: google-github-actions/setup-gcloud@v3
+      
+      - name: Build to gcloud artifact
+        run: gcloud builds submit --tag us-central1-docker.pkg.dev/notely-test/notely-ar-repo .
 
